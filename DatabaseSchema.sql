@@ -18,3 +18,10 @@ foreign key (DirectorId) references Directors(DirectorId),
 foreign key (GenreId) references Genres(GenreId)
 );
 go
+--Directors Table
+CREATE TABLE Directors(
+DirectorId int primary key identity(1,1),
+DirectorName nvarchar(255) NOT NULL,
+DirectorBio nvarchar(max)
+);
+GO
