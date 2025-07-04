@@ -7,7 +7,8 @@ go
 CREATE TABLE Genres (
     GenreId INT PRIMARY KEY IDENTITY(1,1),
     GenreName VARCHAR(100) NOT NULL
-);
+)
+go
 
 
 CREATE TABLE MovieActors (
@@ -16,4 +17,5 @@ CREATE TABLE MovieActors (
     PRIMARY KEY (MovieId, ActorId),
     FOREIGN KEY (MovieId) REFERENCES Movies(MovieId),
     FOREIGN KEY (ActorId) REFERENCES Actors(ActorId)
-);
+)
+go
