@@ -1,0 +1,39 @@
+<div class="container px-4 px-sm-3 px-lg-4 my-4">
+  <div class="d-flex justify-content-end ">
+    <button id="category-btn" class="btn btn-primary d-flex align-items-center gap-2 px-4 py-2 btn-lift"
+      (click)="showAddCategoryForm()">
+      <i class="fa-solid fa-plus"></i> Add Category
+    </button>
+  </div>
+
+  <app-add-category
+    [showCreateForm]="showCreateForm"
+    [loading]="loading"
+    (categoryCreated)="onCategoryCreated($event)"
+    (formClosed)="onCreateFormClosed()">
+  </app-add-category>
+
+  <app-edit-category
+    [showEditForm]="showEditForm"
+    [loading]="loading"
+    [categoryModel]="editCategoryData"
+    (categoryUpdated)="onCategoryUpdated($event)"
+    (formClosed)="onEditFormClosed()">
+  </app-edit-category>
+  
+  <app-category-list
+    [categories]="categories"
+    [loading]="loading"
+    (deleteCategory)="handleDeleteCategory($event)"
+    (updateCategory)="handleUpdateCategory($event)">
+  </app-category-list>
+
+  <div *ngIf="loading" class="text-center mb-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Loading Categories...</p>
+    </div>
+    
+
+</div>

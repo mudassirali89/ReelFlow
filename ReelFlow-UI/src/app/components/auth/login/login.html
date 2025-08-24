@@ -1,0 +1,75 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center py-5 px-3 px-sm-4 px-lg-5" style="background-image: url('https://plus.unsplash.com/premium_photo-1661675440353-6a6019c95bc7?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+ >
+  <div class="w-100" style="width: 35rem;" class="bg-white p-5 rounded-3 shadow">
+    <!-- Header -->
+    <div class="text-center mb-4">
+      <div class="d-flex justify-content-center mb-3">
+        <div class="d-flex align-items-center justify-content-center rounded-3" style="width: 4rem; height: 4rem; background: linear-gradient(to right, #2563eb, #ffffff);">
+          <span class="text-white fw-bold fs-3">R</span>
+        </div>
+      </div>
+      <h2 class="fs-3 fw-bold text-dark mb-2">Welcome back</h2>
+      <p class="text-secondary">Sign in to your ReelFlow account</p>
+    </div>
+
+    <!-- Login Form -->
+    <form #loginForm="ngForm"  (ngSubmit)="onLogin(loginForm)">
+      <div *ngIf="errorMessage!=''" class="alert alert-danger mb-3" role="alert">
+        {{ errorMessage }}
+      </div>
+      <div class="mb-4">
+        <div class="mb-3">
+          <label for="usernameOrEmail" class="form-label text-sm fw-medium text-secondary mb-1">
+            Username
+          </label>
+          <input id="usernameOrEmail" name="usernameOrEmail" type="text" required
+            [(ngModel)]="loginModel.UsernameOrEmail"
+            #usernameOrEmailField="ngModel"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Enter your username or email">
+
+            <div *ngIf="usernameOrEmailField.dirty || usernameOrEmailField.touched" class="text-danger">
+              <div *ngIf="usernameOrEmailField.errors?.['required']">
+                Username or Email is required.
+              </div>
+            </div>
+        </div>
+        <div>
+          <label for="password" class="form-label text-sm fw-medium text-secondary mb-1">
+            Password
+          </label>
+          <input id="password" name="password" type="password" required
+            [(ngModel)]="loginModel.Password"
+            #passwordField="ngModel"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Enter your password">
+            <div *ngIf="passwordField.dirty || passwordField.touched" class="text-danger">
+              <div *ngIf="passwordField.errors?.['required']">
+                Password is required.
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn w-100 d-flex justify-content-center align-items-center py-3 px-4 text-sm fw-medium text-white rounded-3"
+          style="background: linear-gradient(to right, #2563eb, #ffffff);"
+          >
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          {{ isLoading ? 'Signing in...' : 'Sign in' }}
+        
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <span class="text-secondary">Don't have an account? </span>
+        <a routerLink="/register" class="fw-medium text-primary text-decoration-none">
+          Sign up here
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

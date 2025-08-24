@@ -1,0 +1,122 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center py-5 px-3 px-sm-4 px-lg-5" style="background-image: url('https://plus.unsplash.com/premium_photo-1661675440353-6a6019c95bc7?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <div class="w-100" style="width: 35rem;"   class="bg-white p-5 rounded-3 shadow">
+    <!-- Header -->
+    <div class="text-center mb-4">
+      <div class="d-flex justify-content-center mb-3">
+        <div class="d-flex align-items-center justify-content-center rounded-3" style="width: 4rem; height: 4rem; background: linear-gradient(to right, #2563eb, #ffffff);">
+          <span class="text-white fw-bold fs-3">R</span>
+        </div>
+      </div>
+      <h2 class="fs-3 fw-bold text-dark mb-2">Create your account</h2>
+      <p class="text-secondary">Join ReelFlow and start managing your movies</p>
+    </div>
+
+    <!-- Signup Form -->
+    <form #loginForm="ngForm"(ngSubmit)="onSignup(loginForm)" novalidate>
+      <!-- Error Message Display -->
+      <div *ngIf="errorMessage!=''" class="alert alert-danger mb-3" role="alert">
+        {{ errorMessage }}
+      </div>
+      
+      <div class="mb-4">
+        <div class="mb-3">
+          <label for="username" class="form-label text-sm fw-medium text-secondary mb-1">
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            required
+            [(ngModel)]="registerModel.UserName"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Choose a username"
+            #userNameField="ngModel"
+            minlength="3">
+          <div *ngIf="userNameField.invalid && (userNameField.dirty || userNameField.touched)" class="text-danger mt-1">
+            <small *ngIf="userNameField.errors?.['required']">Username is required.</small>
+            <small *ngIf="userNameField.errors?.['minlength']">Username must be at least 3 characters long.</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label text-sm fw-medium text-secondary mb-1">
+            Email Address
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            email
+            [(ngModel)]="registerModel.Email"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Enter your email"
+            #emailField="ngModel"
+            >
+          <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger mt-1">
+            <small *ngIf="emailField.errors?.['required']">Email is required.</small>
+            <small *ngIf="emailField.errors?.['email']">Please enter a valid email address.</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label text-sm fw-medium text-secondary mb-1">
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            [(ngModel)]="registerModel.Password"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Create a password"
+            #passwordField="ngModel"
+            minlength="6">
+          <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger mt-1">
+            <small *ngIf="passwordField.errors?.['required']">Password is required.</small>
+            <small *ngIf="passwordField.errors?.['minlength']">Password must be at least 6 characters long.</small>
+        </div>
+        </div>
+        <div>
+          <label for="confirmPassword" class="form-label text-sm fw-medium text-secondary mb-1">
+            Confirm Password
+          </label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            required
+            [(ngModel)]="registerModel.ConfirmPassword"
+            class="form-control rounded-3 px-3 py-3 border border-gray"
+            placeholder="Confirm your password"
+            #confirmPasswordField="ngModel"
+          >
+          <div *ngIf="confirmPasswordField.invalid && (confirmPasswordField.dirty || confirmPasswordField.touched)" class="text-danger mt-1">
+            <small *ngIf="confirmPasswordField.errors?.['required']">Confirm Password is required.</small>
+          </div>
+          <div *ngIf="!confirmPasswordField.errors?.['required'] && !passwordsMatch()" class="text-danger mt-1">
+            <small>Passwords do not match.</small>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <button
+          type="submit"
+          class="btn w-100 d-flex justify-content-center align-items-center py-3 px-4 text-sm fw-medium text-white rounded-3"
+          style="background: linear-gradient(to right, #2563eb, #ffffff);"
+          [disabled]="loginForm.invalid || isLoading">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          {{ isLoading ? 'Registering...' : 'Register' }}
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <span class="text-secondary">Already have an account? </span>
+        <a routerLink='/login' class="fw-medium text-primary text-decoration-none">
+          Sign in here
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

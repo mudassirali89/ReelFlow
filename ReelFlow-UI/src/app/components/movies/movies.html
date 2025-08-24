@@ -1,0 +1,81 @@
+<div class="container px-4 px-sm-3 px-lg-4 my-4">
+  
+  <!-- Filter/Search/Add Row with shadow -->
+  <div class="filter-search-add shadow-sm p-3 rounded mb-4">
+    <div class="row g-3 align-items-stretch">
+      
+      <!-- Filter Component (small width) -->
+      <div class="col-12 col-md-auto ">
+        <app-filter-component
+          [categories]="categories"
+          (categorySelected)="onFilterCategory($event)"
+          class="filter-wrapper">
+        </app-filter-component>
+      </div>
+
+      <!-- Search Button (larger width) -->
+      <div class="col-12 col-md btn-lift">
+        <button
+          class="btn btn-outline-secondary w-100 h-100 d-flex align-items-center justify-content-center gap-2 py-2"
+          (click)="toggleSearchForm()">
+          <i class="bi bi-search"></i> Search Movie
+        </button>
+      </div>
+
+      <!-- Add Movie Button -->
+      <div class="col-12 col-md btn-lift">
+        <button
+          class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center gap-2 py-2"
+          (click)="showAddMovieForm()" id="addMovieButton">
+          <i class="fa-solid fa-plus"></i> Add Movie
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- End Filter/Search/Add -->
+
+  <!-- Search Form Component -->
+  <app-search-movie
+    *ngIf="showSearchForm"
+    (search)="onSearchMovies($event)"
+    (reset)="onResetMovies()"
+    (close)="showSearchForm = false">
+  </app-search-movie>
+
+  <!-- Add Movie Form -->
+  <app-add-movie
+    *ngIf="showCreateForm"
+    [showCreateForm]="showCreateForm"
+    [loading]="loading"
+    [categories]="categories"
+    (movieCreated)="onMovieCreated($event)"
+    (formClosed)="onCreateFormClosed()">
+  </app-add-movie>
+
+  <!-- Edit Movie Form -->
+  <app-edit-movie
+    [showEditForm]="showEditForm"
+    [loading]="loading"
+    [movieModel]="editMovieData"
+    [categories]="movieCategories"
+    (movieUpdated)="onMovieUpdated($event)"
+    (formClosed)="onEditFormClosed()">
+  </app-edit-movie>
+
+  <!-- Movie List -->
+  <app-movie-list
+    [movies]="movies"
+    [categories]="movieCategories"
+    [loading]="loading"
+    (updateMovie)="handleUpdateMovie($event)">
+  </app-movie-list>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="text-center mb-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading Movies...</p>
+  </div>
+</div>

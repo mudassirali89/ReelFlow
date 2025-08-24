@@ -1,0 +1,19 @@
+<!-- Filter by Category -->
+<div class="filter-dropdown me-2">
+  <div class="dropdown w-100">
+    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="filterDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+      Filter by Category
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+      <li>
+        <a class="dropdown-item" href="#" (click)="onFilterCategory(null); $event.preventDefault()">All Categories</a>
+      </li>
+      <li *ngFor="let category of categories">
+        <a class="dropdown-item" href="#" (click)="onFilterCategory(category.id); $event.preventDefault()">
+          {{ category.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

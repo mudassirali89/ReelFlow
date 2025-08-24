@@ -1,0 +1,104 @@
+<!-- Edit Movie Popup -->
+<div *ngIf="showEditForm" class="modal-backdrop d-flex align-items-center justify-content-center">
+  <div class="modal-container w-100" style="max-width: 42rem;">
+    
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between px-4 py-3 rounded-top"
+         style="background: linear-gradient(to right, #2563eb, #1e3a8a);">
+      <h5 class="mb-0 text-white fw-bold">Edit Movie</h5>
+      <button type="button" class="btn-close btn-close-white" (click)="onCancel()"></button>
+    </div>
+
+    <!-- Body (Form) -->
+    <div class="p-4">
+      <form (ngSubmit)="onEditSubmit(editMovieForm)" #editMovieForm="ngForm">
+
+        <div class="row g-3">
+          <!-- Title -->
+          <div class="col-12">
+            <label class="form-label fw-medium text-secondary">Title</label>
+            <input type="text" name="title"
+                   [(ngModel)]="movieModel.title"
+                   required
+                   class="form-control rounded-3 px-3 py-2"
+                   placeholder="Enter title">
+          </div>
+
+          <!-- Genre -->
+          <div class="col-md-6">
+            <label class="form-label fw-medium text-secondary">Genre</label>
+            <input type="text" name="genre"
+                   [(ngModel)]="movieModel.genre"
+                   required
+                   class="form-control rounded-3 px-3 py-2"
+                   placeholder="Enter genre">
+          </div>
+
+          <!-- Release Date -->
+          <div class="col-md-6">
+            <label class="form-label fw-medium text-secondary">Release Date</label>
+            <input type="date" name="releaseDate"
+                   [(ngModel)]="movieModel.releaseDate"
+                   required
+                   class="form-control rounded-3 px-3 py-2">
+          </div>
+
+          <!-- Director -->
+          <div class="col-md-6">
+            <label class="form-label fw-medium text-secondary">Director</label>
+            <input type="text" name="director"
+                   [(ngModel)]="movieModel.director"
+                   required
+                   class="form-control rounded-3 px-3 py-2"
+                   placeholder="Enter director">
+          </div>
+
+          <!-- Duration -->
+          <div class="col-md-6">
+            <label class="form-label fw-medium text-secondary">Duration (minutes)</label>
+            <input type="number" name="durationMinutes"
+                   [(ngModel)]="movieModel.durationMinutes"
+                   required
+                   class="form-control rounded-3 px-3 py-2"
+                   placeholder="Enter duration">
+          </div>
+
+          <!-- Description -->
+          <div class="col-12">
+            <label class="form-label fw-medium text-secondary">Description</label>
+            <textarea name="description" rows="3"
+                      [(ngModel)]="movieModel.description"
+                      required
+                      class="form-control rounded-3 px-3 py-3"
+                      placeholder="Enter description"></textarea>
+          </div>
+
+          <!-- Category -->
+          <div class="col-12">
+            <label class="form-label fw-medium text-secondary">Category</label>
+            <select name="categoryId"
+                    [(ngModel)]="movieModel.categoryId"
+                    required
+                    class="form-select rounded-3 px-3 py-2">
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="d-flex justify-content-end mt-4">
+          <button type="button" class="btn btn-outline-secondary rounded-3 me-2" (click)="onCancel()">Cancel</button>
+          <button type="submit"
+                  class="btn btn-primary text-white rounded-3 px-4"
+                  [disabled]="editMovieForm.invalid">
+            Save Changes
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

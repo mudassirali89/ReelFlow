@@ -1,0 +1,26 @@
+.modal-backdrop {
+  position: fixed;        /* stay on top of page */
+  top: 0;
+  left: 0;
+  width: 100vw;           /* full screen */
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* dimmed background */
+  z-index: 1050;          /* higher than table */
+}
+
+.modal-container {
+  z-index: 1100;          /* make sure form is above backdrop */
+  animation: fadeInUp 0.3s ease;
+}
+
+/* simple animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

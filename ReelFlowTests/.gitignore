@@ -1,0 +1,33 @@
+﻿# Build results
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Rider/VSCode
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# ASP.NET secrets
+secrets.json
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Node/npm (if using SPA)
+node_modules/
+
+# Published output
+publish/
+wwwroot/lib/
+
+# OS junk files
+.DS_Store
+Thumbs.db

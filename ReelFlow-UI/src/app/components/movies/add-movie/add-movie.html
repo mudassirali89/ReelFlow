@@ -1,0 +1,107 @@
+<div *ngIf="showCreateForm" 
+     class=" modal-backdrop min-vh-100 d-flex align-items-center justify-content-center py-5 px-3 px-sm-4 px-lg-5">
+
+  <div class="modal-container w-100 bg-white rounded-3 shadow" style="max-width: 40rem;">
+
+    <!-- Top Header Bar -->
+    <div class="d-flex align-items-center justify-content-between px-4 py-3 rounded-top"
+         style="background: linear-gradient(to right, #2563eb, #1e3a8a);">
+      <h5 class="mb-0 text-white fw-bold">
+        Add Movie
+      </h5>
+      <button type="button" class="btn-close btn-close-black" (click)="onClose()"></button>
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="addMovie(movieForm)" #movieForm="ngForm" class="p-4">
+
+      <div class="row g-3">
+
+        <!-- Title -->
+        <div class="col-12">
+          <label class="form-label fw-medium text-secondary">Title</label>
+          <input type="text" name="Title"
+                 [(ngModel)]="movieModel.title"
+                 required
+                 class="form-control rounded-3 px-3 py-2 border border-gray"
+                 placeholder="Enter title">
+        </div>
+
+        <!-- Genre -->
+        <div class="col-md-6">
+          <label class="form-label fw-medium text-secondary">Genre</label>
+          <input type="text" name="Genre"
+                 [(ngModel)]="movieModel.genre"
+                 required
+                 class="form-control rounded-3 px-3 py-2 border border-gray"
+                 placeholder="Enter genre">
+        </div>
+
+        <!-- Release Date -->
+        <div class="col-md-6">
+          <label class="form-label fw-medium text-secondary">Release Date</label>
+          <input type="date" name="ReleaseDate"
+                 [(ngModel)]="movieModel.releaseDate"
+                 required
+                 class="form-control rounded-3 px-3 py-2 border border-gray">
+        </div>
+
+        <!-- Director -->
+        <div class="col-md-6">
+          <label class="form-label fw-medium text-secondary">Director</label>
+          <input type="text" name="Director"
+                 [(ngModel)]="movieModel.director"
+                 required
+                 class="form-control rounded-3 px-3 py-2 border border-gray"
+                 placeholder="Enter director">
+        </div>
+
+        <!-- Duration -->
+        <div class="col-md-6">
+          <label class="form-label fw-medium text-secondary">Duration (minutes)</label>
+          <input type="number" name="DurationMinutes"
+                 [(ngModel)]="movieModel.durationMinutes"
+                 required
+                 class="form-control rounded-3 px-3 py-2 border border-gray"
+                 placeholder="Enter duration">
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label class="form-label fw-medium text-secondary">Description</label>
+          <textarea name="Description" rows="3"
+                    [(ngModel)]="movieModel.description"
+                    required
+                    class="form-control rounded-3 px-3 py-3 border border-gray"
+                    placeholder="Enter description"></textarea>
+        </div>
+
+        <!-- Category Select Dropdown -->
+        <div class="col-12">
+          <label class="form-label fw-medium text-secondary">Category</label>
+          <select name="CategoryId"
+                  [(ngModel)]="movieModel.categoryId"
+                  required
+                  class="form-select rounded-3 px-3 py-2 border border-gray">
+            <option value="" disabled selected>Select Category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-outline-secondary rounded-3 me-2" (click)="onClose()">Cancel</button>
+        <button type="submit"
+                class="btn btn-primary text-white rounded-3 px-4 py-2"
+                [disabled]="movieForm.invalid">
+          Submit
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

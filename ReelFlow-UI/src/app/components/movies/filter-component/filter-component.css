@@ -1,0 +1,13 @@
+.filter-dropdown .btn {
+  height: calc(2.25rem + 0.75rem + 2px); /* same as form-control-lg */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Align with search bar and button */
+.filter-dropdown {
+  display: flex;
+  align-items: stretch;
+}

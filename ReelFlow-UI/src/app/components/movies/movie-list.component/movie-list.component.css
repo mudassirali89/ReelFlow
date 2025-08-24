@@ -1,0 +1,87 @@
+/* Panel styling same as category */
+.movie-panel {
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+  border-radius: 10px;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.05), 0 0 0 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.movie-header {
+  padding: 15px;
+  background: transparent;
+  color: #fff;
+}
+
+.movie-header h5 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Table style same as category */
+.movie-table thead th {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  border-right: 1px solid rgba(255,255,255,0.15); /* column separator */
+}
+
+.movie-table tbody td {
+  color: #fff;
+  border: none;
+  background: rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(255,255,255,0.15); /* column separator */
+}
+
+.movie-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Keep your column widths */
+.movie-table {
+  table-layout: fixed; 
+  width: 100%;
+}
+
+.movie-table td,
+.movie-table th {
+  white-space: normal;      
+  word-wrap: break-word;     
+  overflow-wrap: break-word; 
+  vertical-align: top;    
+}  
+
+.movie-table td:first-child,
+.movie-table th:first-child {
+  width: 300px !important;
+}
+
+.movie-table td:nth-child(2),
+.movie-table th:nth-child(2) {
+  width: 250px !important;
+}
+
+/* Icon styling */
+#button :hover {
+  cursor: pointer;
+  text-shadow: 0 0 5px #fff;
+}
+#deleteButton {
+  color: red;
+}
+#editButton {
+  color: #0d6efd;
+}
+#editButton,
+#deleteButton {
+  font-size: 1.3rem; 
+}
+
+.movie-table td:nth-child(7) {
+  padding-left: 35px;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}

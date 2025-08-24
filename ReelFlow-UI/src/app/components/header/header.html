@@ -1,0 +1,72 @@
+<header class="shadow border-bottom border-gray" style="background-color: #000000;">
+  <div class="container px-4 px-sm-3 px-lg-4">
+    <div class="d-flex justify-content-between align-items-center h-100 py-2">
+      <!-- Logo and Brand -->
+      <div class="d-flex align-items-center gap-4">
+        <!-- <a href="/dashboard" class="d-flex align-items-center gap-2 text-decoration-none"> -->
+          <div class="d-flex align-items-center justify-content-center rounded" style="width: 2rem; height: 2rem; background: linear-gradient(to right, #2563eb, #000000);">
+            <span class="text-white fw-bold fs-6">R</span>
+          </div>
+          <span class="fs-4 fw-bold text-white">ReelFlow</span>
+        <!-- </a> -->
+
+        <nav *ngIf="isAuthenticated()" class="d-none d-md-flex align-items-center gap-3 ms-4">
+          <a 
+            routerLink="/movies" 
+            routerLinkActive="active"
+            class="text-white text-decoration-none fs-6 fw-bold d-flex align-items-center gap-1 ">
+            <i class="fa-solid fa-clapperboard"></i> Movies
+          </a>
+          <a 
+            routerLink="/categories" 
+            routerLinkActive="active"
+            class="text-white text-decoration-none fs-6 fw-bold d-flex align-items-center gap-1">
+            <i class="fa-solid fa-list"></i> Categories
+          </a>
+        </nav>
+      </div>
+
+      <div *ngIf="!isAuthenticated()" class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <a 
+            routerLink="/login"
+            class="text-secondary text-decoration-none px-3 py-2 fs-6 fw-medium">
+            Login
+          </a>
+          <a 
+            routerLink="/register"
+            class="btn btn-primary text-white px-4 py-2 rounded fs-6 fw-medium">
+            Sign Up
+          </a>
+        </div>
+      </div>
+
+      
+
+      <div *ngIf="isAuthenticated()" class="dropdown">
+        <button
+          class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 px-3 py-2 fs-6 fw-bold"
+          type="button"
+          id="userDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-user"></i>
+          Welcome, {{ getCurrentUser() }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li id="logoutButton">
+            <a 
+              class="dropdown-item text-danger d-flex align-items-center gap-2 fw-bold"
+              (click)="logout()"
+            >
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</header>

@@ -1,0 +1,58 @@
+<!-- Add Category Popup -->
+<div *ngIf="showCreateForm" class="modal-backdrop d-flex align-items-center justify-content-center">
+  <div class="modal-container w-100" style="max-width: 40rem;">
+    
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between px-4 py-3 rounded-top" 
+         style="background: linear-gradient(to right, #2563eb, #1e3a8a);">
+      <h5 class="mb-0 text-white fw-bold">Add Category</h5>
+      <button type="button" class="btn-close btn-close-white" (click)="onClose()"></button>
+    </div>
+
+    <!-- Body (Form) -->
+    <form #createForm="ngForm" class="p-4" (ngSubmit)="createCategory(createForm)">
+      
+      <div class="row g-3">
+        
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="name" class="form-label fw-medium text-secondary">Name</label>
+          <input id="name" name="name" type="text"
+            [(ngModel)]="categoryModel.name" required
+            #categoryName="ngModel"
+            class="form-control rounded-3 px-3 py-2 border"
+            placeholder="Enter name">
+          <div *ngIf="categoryName.dirty || categoryName.touched" class="text-danger small">
+            <div *ngIf="categoryName.errors?.['required']">Name is required.</div>
+          </div>
+        </div>
+
+        <!-- Empty Column -->
+        <div class="col-md-6"></div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label for="description" class="form-label fw-medium text-secondary">Description</label>
+          <textarea id="description" name="description" rows="4"
+            [(ngModel)]="categoryModel.description" required
+            #categoryDescription="ngModel"
+            class="form-control rounded-3 px-3 py-3 border"
+            placeholder="Enter description"></textarea>
+          <div *ngIf="categoryDescription.dirty || categoryDescription.touched" class="text-danger small">
+            <div *ngIf="categoryDescription.errors?.['required']">Description is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-outline-secondary rounded-3 me-2" (click)="onClose()">Cancel</button>
+        <button [disabled]="!createForm.valid || loading"
+                type="submit"
+                class="btn btn-primary text-white rounded-3 px-4 py-2">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

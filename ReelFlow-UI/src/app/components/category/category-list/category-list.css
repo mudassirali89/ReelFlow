@@ -1,0 +1,149 @@
+.category-panel {
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+  border-radius: 10px;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.05), 0 0 0 10px rgba(0,0,0,0.05);
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.category-header {
+  padding: 15px;
+  background: transparent;
+  color: #fff;
+}
+
+.category-header .title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.btn-group-panel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-group-panel .form-control {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 20px;
+  height: 38px;
+  padding: 5px 12px;
+}
+
+.btn-group-panel .form-control::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.btn-group-panel .btn {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 5px 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-group-panel .btn:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+}
+
+.category-body table thead th {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  border-right: 1px solid rgba(255,255,255,0.15); /* column separator */
+}
+
+.category-body table tbody td {
+  color: #fff;
+  border: none;
+  background: rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(255,255,255,0.15); /* column separator */
+}
+
+.category-body table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.action-list li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.action-list a {
+  color: #fff;
+  position: relative;
+}
+
+.action-list a:hover {
+  text-shadow: 0 0 5px #fff;
+}
+
+.action-list a:before {
+  content: attr(data-tip);
+  position: absolute;
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.action-list a:hover:before {
+  display: block;
+}
+
+.no-data {
+  text-align: center;
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.category-footer {
+  padding: 12px;
+  background: transparent;
+  color: #fff;
+}
+
+#edit :hover{
+    cursor:pointer;
+    
+}
+
+#delete :hover{
+  cursor:pointer;
+}
+#edit2{
+    color: #0d6efd;
+    margin-right: 10px;
+}
+#delete2{
+    color:red;
+}
+
+#edit2,
+#delete2 {
+  font-size: 1.3rem; /* increase size */
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+

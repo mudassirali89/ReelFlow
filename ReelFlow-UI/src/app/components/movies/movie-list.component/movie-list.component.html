@@ -1,0 +1,49 @@
+<!-- Movie List Card -->
+<div class=" movie-panel">
+  <div class=" movie-header">
+    <h5 class="mb-0">Movies List ({{ movies.length }} items)</h5>
+  </div>
+  <div class=" movie-body">
+    <div *ngIf="movies.length === 0 && !loading" class="text-center text-muted py-5">
+      <i class="bi bi-film display-1"></i>
+      <h4 class="mt-3">No movies found</h4>
+      <p>Click "Add New Movie" to create your first movie.</p>
+    </div>
+
+    <div *ngIf="movies.length > 0" class="table-responsive movie-table">
+      <table class="table movie-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Release Date</th>
+            <th>Duration</th>
+            <th>Director</th>
+            <th>Category</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies" class="lift">
+            <td class="fw-bold">{{ movie.title }} ({{ movie.genre }})</td>
+            <td>{{ movie.description }}</td>
+            <td>{{ movie.releaseDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{ movie.durationMinutes }} min</td>
+            <td>{{ movie.director }}</td>
+            <td>
+              <span class="badge bg-primary">
+                {{ getCategoryName(movie.categoryId) }}
+              </span>
+            </td>
+            <td>
+              <div id="button" class="d-flex gap-3 align-items-center">
+                <i class="fa-solid fa-pen-to-square" (click)="onUpdate(movie)" id="editButton"></i>
+                <i class="fa-solid fa-trash" (click)="onDelete(movie.movieId)" id="deleteButton"></i>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

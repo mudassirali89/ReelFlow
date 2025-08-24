@@ -1,0 +1,11 @@
+#category-btn{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.btn-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+#category-btn:hover {
+  background-color: navy;
+}

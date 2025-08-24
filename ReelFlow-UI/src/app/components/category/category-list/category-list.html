@@ -1,0 +1,56 @@
+<div class="category-panel">
+  <!-- Panel Heading -->
+  <div class="category-header">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h4 class="title">Categories <span>List</span> ({{ categories.length }} items)</h4>
+      </div>
+      <div class="col-md-6 text-md-end text-center">
+        <!-- Search + Actions -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel Body -->
+  <div class="category-body table-responsive" *ngIf="categories.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories" class="lift">
+          <td class="fw-bold">{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <td>
+            <ul class="action-list" >
+              <li id="edit">
+                <a data-tip="Edit" (click)="onUpdate(category)">
+                  <i class="fa fa-edit" id="edit2"></i>
+                </a>
+              </li>
+              <li id="delete">
+                <a data-tip="Delete" (click)="onDelete(category.id)">
+                  <i class="fa fa-trash" id="delete2"></i>
+                </a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Categories Message -->
+  <div *ngIf="categories.length === 0 && !loading" class="no-data">
+    <i class="bi bi-tags display-1"></i>
+    <h4>No categories found</h4>
+    <p>Click "Add New Category" to create your first category.</p>
+  </div>
+
+  
+</div>

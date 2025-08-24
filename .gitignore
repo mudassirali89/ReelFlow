@@ -1,0 +1,35 @@
+# Build Folders (VS, obj, bin, etc)
+bin/
+obj/
+.vs/
+ReelFlowTests/bin/
+ReelFlowTests/obj/
+ReelFlow/bin/
+ReelFlow/obj/
+
+# Angular Build Folders
+ReelFlow-UI/node_modules/
+ReelFlow-UI/dist/
+ReelFlow-UI/.angular/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and Dumps
+*.log
+*.tmp
+*.bak
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Others
+*.db
+*.pdb
+*.DS_Store
+Thumbs.db
